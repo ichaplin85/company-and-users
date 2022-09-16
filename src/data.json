@@ -1,0 +1,66 @@
+{
+  "companies": [{
+    "name": "Romaguera-Crona",
+    "employyees": 3,
+    "address": "harness real-time e-markets",
+    "users": [
+      {
+        "id": 1,
+        "name": "Leanne Graham",
+        "surname": "Bret",
+        "position": "Sincere@april.biz"
+      },
+      {
+        "id": 2,
+        "name": "Ervin Howell",
+        "surname": "Antonette",
+        "position": "Shanna@melissa.tv"
+      },
+      {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "surname": "Samantha",
+        "position": "Nathan@yesenia.net"
+      }
+    ]
+    },
+    {
+      "name": "Deckow-Crist",
+      "employyees": 3,
+      "address": "synergize scalable supply-chains",
+      "users":[{
+        "id": 1,
+        "name": "Leanne Graham",
+        "surname": "Bret",
+        "position": "Sincere@april.biz"
+      },
+      {
+        "id": 2,
+        "name": "Ervin Howell",
+        "surname": "Antonette",
+        "position": "Shanna@melissa.tv"
+      },
+      {
+        "id": 3,
+        "name": "Clementine Bauch",
+        "surname": "Samantha",
+        "position": "Nathan@yesenia.net"
+      }]
+    },
+    {
+        "name": "Robel-Corkery",
+        "employyees": 2,
+        "address": "transition cutting-edge web services",
+        "users":[{
+          "id": 4,
+          "name": "Patricia Lebsack",
+          "surname": "Karianne",
+          "position": "Julianne.OConner@kory.org"},
+          {"id": 5,
+          "name": "Chelsey Dietrich",
+          "surname": "Kamren",
+          "position": "Lucio_Hettinger@annie.ca"}
+        ]
+    }]
+}
+

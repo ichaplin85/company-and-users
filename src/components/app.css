@@ -1,0 +1,61 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.App {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+}
+
+
+.popup {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  min-width: 300px;
+  background-color: antiquewhite;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.popup input{
+  min-width: 75%;
+  height: 26px;
+}
+
+.btns {
+  margin-top: 10px;
+}
+
+.company {
+  display: flex;
+}
+
+
+td {
+  border: 1px solid black;
+}
+
+th {
+  border: 1px solid black;
+}
+
+tr.active {
+  color: red;
+}
+
+.btn {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color:rgb(100, 98, 100);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
