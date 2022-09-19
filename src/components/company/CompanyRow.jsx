@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteCompany, check } from "../redux/companySlice";
+import { deleteCompany, check } from "../../redux/companySlice";
 
-const Companyrow = ({ company }) => {
+const CompanyRow = ({ company }) => {
   const dispatch = useDispatch();
 
   const deleteHandler = (e) => {
@@ -35,4 +35,4 @@ const Companyrow = ({ company }) => {
   );
 };
 
-export default Companyrow;
+export default CompanyRow;

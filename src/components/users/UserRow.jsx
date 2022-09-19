@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteUserFromCompany } from "../redux/companySlice";
-import { deleteUser, checkUser } from "../redux/userSlice";
+import { deleteUserFromCompany } from "../../redux/companySlice";
+import { deleteUser, checkUser } from "../../redux/userSlice";
 
-const Userrow = ({ user }) => {
+const UserRow = ({ user }) => {
   const dispatch = useDispatch();
 
   const deleteHandler = (e) => {
@@ -35,4 +35,4 @@ const Userrow = ({ user }) => {
   );
 };
 
-export default Userrow;
+export default UserRow;

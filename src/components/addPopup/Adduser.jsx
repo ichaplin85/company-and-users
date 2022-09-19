@@ -10,7 +10,7 @@ const initialValues = {
   position: "",
 };
 
-const Adduser = ({popUserHandler, isAddEmploy, toggleAddUserPopup}) => {
+const AddUser = ({ isAddEmploy, toggleAddUserPopup}) => {
 
   const companies = useSelector(state=> state.companies)
 
@@ -72,4 +72,4 @@ const Adduser = ({popUserHandler, isAddEmploy, toggleAddUserPopup}) => {
   );
 };
 
-export default Adduser;
+export default AddUser;

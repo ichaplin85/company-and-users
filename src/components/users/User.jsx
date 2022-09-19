@@ -1,13 +1,35 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteMassUsers } from '../redux/companySlice';
-import { checkAllUsers, deleteSecondUsers } from '../redux/userSlice';
-import Userrow from './Userrow';
+import React, {useMemo} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteMassUsers } from '../../redux/companySlice';
+import { checkAllUsers, deleteSecondUsers } from '../../redux/userSlice';
+import Userrow from './UserRow';
+import * as selectors from '../../redux/selectors'
 
 
-const User = ({users, isAllCheckedUsers, toggleAddUserPopup}) => {
+const User = ({toggleAddUserPopup}) => {
 
   const dispatch = useDispatch();
+  const companies  = useSelector(selectors.companies);
+  const users = useSelector(selectors.users);
+
+  const checkedCompanies = useMemo(() => {
+    return companies.filter(({ checked }) => Boolean(checked));
+  }, [companies])
+
+  const usersForCompanies = useMemo(() => {
+    return checkedCompanies.reduce(
+      (acc, { id }) => [
+        ...acc,
+        ...users.filter(({ companyId }) => companyId === id),
+      ],
+      [])
+  }, [checkedCompanies, users]);
+
+
+  const isAllCheckedUsers = useMemo(() => {
+    return usersForCompanies.length > 0 && usersForCompanies.every(({checked}) => Boolean(checked))
+  }, [usersForCompanies])
+
 
 
   const toggle = (e) => {
@@ -26,7 +48,7 @@ const User = ({users, isAllCheckedUsers, toggleAddUserPopup}) => {
 
   const deleteHandler = (e) => {
     e.preventDefault()
-    const checkedUsers = users.filter(({checked})=> Boolean(checked));
+    const checkedUsers = usersForCompanies.filter(({checked})=> Boolean(checked));
 
     dispatch(deleteMassUsers(checkedUsers))
     dispatch(deleteSecondUsers())
@@ -59,7 +81,7 @@ const User = ({users, isAllCheckedUsers, toggleAddUserPopup}) => {
         </tr>
       </thead>
       <tbody>
-        {users.map(el => <Userrow key={el.id} user={el}/>)}
+        {usersForCompanies.map(el => <Userrow key={el.id} user={el}/>)}
       </tbody>
     </table>
     </div>

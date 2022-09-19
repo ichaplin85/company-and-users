@@ -10,7 +10,7 @@ const initialValues = {
   employyees: 0,
 };
 
-const Addcompanies = ({isAddCompany, toggleAddPopup}) => {
+const AddCompany = ({isAddCompany, toggleAddPopup}) => {
   const dispatch = useDispatch();
 
   const [values, setValues] = useState(initialValues)
@@ -49,4 +49,4 @@ const Addcompanies = ({isAddCompany, toggleAddPopup}) => {
   );
 };
 
-export default Addcompanies;
+export default AddCompany;
