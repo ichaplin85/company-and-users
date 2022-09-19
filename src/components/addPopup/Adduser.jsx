@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import vuid from 'vuid';
 import { addUserToCompany } from '../../redux/companySlice';
 import { addUser } from '../../redux/userSlice';
+import * as selectors from '../../redux/selectors'
+
 
 const initialValues = {
   name: "",
@@ -12,8 +14,7 @@ const initialValues = {
 
 const AddUser = ({ isAddEmploy, toggleAddUserPopup}) => {
 
-  const companies = useSelector(state=> state.companies)
-
+  const companies = useSelector(selectors.companies)
 
   const dispatch = useDispatch();
 

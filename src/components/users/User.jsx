@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMassUsers } from '../../redux/companySlice';
 import { checkAllUsers, deleteSecondUsers } from '../../redux/userSlice';
@@ -9,27 +9,9 @@ import * as selectors from '../../redux/selectors'
 const User = ({toggleAddUserPopup}) => {
 
   const dispatch = useDispatch();
-  const companies  = useSelector(selectors.companies);
   const users = useSelector(selectors.users);
-
-  const checkedCompanies = useMemo(() => {
-    return companies.filter(({ checked }) => Boolean(checked));
-  }, [companies])
-
-  const usersForCompanies = useMemo(() => {
-    return checkedCompanies.reduce(
-      (acc, { id }) => [
-        ...acc,
-        ...users.filter(({ companyId }) => companyId === id),
-      ],
-      [])
-  }, [checkedCompanies, users]);
-
-
-  const isAllCheckedUsers = useMemo(() => {
-    return usersForCompanies.length > 0 && usersForCompanies.every(({checked}) => Boolean(checked))
-  }, [usersForCompanies])
-
+  const usersForCompanies = useSelector(selectors.usersForCompanies)
+  const isAllCheckedUsers = useSelector(selectors.isAllCheckedUsers)
 
 
   const toggle = (e) => {

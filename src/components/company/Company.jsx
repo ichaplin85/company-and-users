@@ -1,18 +1,17 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkAllCompanies, deleteSecondCompany } from '../../redux/companySlice';
 import { deleteUsersWithCompany } from '../../redux/userSlice';
 import CompanyRow from './CompanyRow';
+import * as selectors from '../../redux/selectors'
+
 
 
 const Company = ({toggleCompany, toggleAddPopup}) => {
 
   const dispatch = useDispatch();
-  const companies  = useSelector((state) => state.companies);
-
-  const isAllChecked = useMemo(() => {
-    return companies.length > 0 && companies.every(({checked}) => Boolean(checked))
-  }, [companies])
+  const companies  = useSelector(selectors.companies);
+  const isAllChecked = useSelector(selectors.isAllChecked);
 
 
   const toggle = (e) => {
