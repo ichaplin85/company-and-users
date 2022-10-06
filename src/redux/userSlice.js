@@ -220,6 +220,14 @@ const userSlices = createSlice({
         }
       })
     },
+    changeUser(state, { payload }) {
+      const { field, user, input } = payload;
+      state.forEach((u) => {
+        if (u.id === user.id) {
+          u[field] = input
+        }
+      })
+    },
     deleteSecondUsers(state, { payload }) {
       return state.filter(({ checked }) => Boolean(!checked))
     },
@@ -246,6 +254,7 @@ export const {
   checkAllUsers,
   checkUser,
   deleteSecondUsers,
-  deleteUsersWithCompany
+  deleteUsersWithCompany,
+  changeUser
 } = userSlices.actions
 export default userSlices.reducer

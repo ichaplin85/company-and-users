@@ -65,6 +65,14 @@ const companySlice = createSlice({
         company.checked = payload
       })
     },
+    changeCompany(state, { payload }) {
+      const { field, company, input } = payload;
+      state.forEach((c) => {
+        if (c.id === company.id) {
+          c[field] = input
+        }
+      })
+    },
     deleteMassUsers(state, { payload }) {
       const mapUsers = {}
       for (const num of payload) {
@@ -92,7 +100,8 @@ export const {
   check,
   checkAllCompanies,
   deleteSecondCompany,
-  deleteMassUsers
+  deleteMassUsers,
+  changeCompany
 } = companySlice.actions
 
 export default companySlice.reducer

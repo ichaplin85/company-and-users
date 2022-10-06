@@ -1,14 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAllCompanies, deleteSecondCompany } from '../redux/companySlice';
-import { deleteUsersWithCompany } from '../redux/userSlice';
-import Companyrow from './Companyrow';
+import { checkAllCompanies, deleteSecondCompany } from '../../redux/companySlice';
+import { deleteUsersWithCompany } from '../../redux/userSlice';
+import CompanyRow from './CompanyRow';
+import * as selectors from '../../redux/selectors'
 
 
-const Company = ({toggleCompany, isAllChecked, toggleAddPopup}) => {
+
+const Company = ({toggleCompany, toggleAddPopup}) => {
 
   const dispatch = useDispatch();
-  const companies  = useSelector((state) => state.companies);
+  const companies  = useSelector(selectors.companies);
+  const isAllChecked = useSelector(selectors.isAllChecked);
 
 
   const toggle = (e) => {
@@ -20,11 +23,11 @@ const Company = ({toggleCompany, isAllChecked, toggleAddPopup}) => {
     toggleAddPopup()
   }
 
-   
+
   const deleteHandler = (e) => {
     e.preventDefault()
-    const checkedCompaines = companies.filter(({checked}) => Boolean(checked));
-    dispatch(deleteUsersWithCompany(checkedCompaines))
+    const checkedCompanies = companies.filter(({checked}) => Boolean(checked));
+    dispatch(deleteUsersWithCompany(checkedCompanies))
     dispatch(deleteSecondCompany())
   }
 
@@ -56,7 +59,7 @@ const Company = ({toggleCompany, isAllChecked, toggleAddPopup}) => {
         </thead>
         <tbody>
           {companies.map(el =>
-          <Companyrow
+          <CompanyRow
             key={el.id}
             company={el}
             toggleCompany={toggleCompany}

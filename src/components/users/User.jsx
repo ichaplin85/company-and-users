@@ -1,13 +1,18 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteMassUsers } from '../redux/companySlice';
-import { checkAllUsers, deleteSecondUsers } from '../redux/userSlice';
-import Userrow from './Userrow';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteMassUsers } from '../../redux/companySlice';
+import { checkAllUsers, deleteSecondUsers } from '../../redux/userSlice';
+import Userrow from './UserRow';
+import * as selectors from '../../redux/selectors'
 
 
-const User = ({users, isAllCheckedUsers, toggleAddUserPopup}) => {
+const User = ({toggleAddUserPopup}) => {
 
   const dispatch = useDispatch();
+  const users = useSelector(selectors.users);
+  const usersForCompanies = useSelector(selectors.usersForCompanies)
+  const isAllCheckedUsers = useSelector(selectors.isAllCheckedUsers)
+  const checkedUsers = useSelector(selectors.checkedUsers)
 
 
   const toggle = (e) => {
@@ -26,7 +31,6 @@ const User = ({users, isAllCheckedUsers, toggleAddUserPopup}) => {
 
   const deleteHandler = (e) => {
     e.preventDefault()
-    const checkedUsers = users.filter(({checked})=> Boolean(checked));
 
     dispatch(deleteMassUsers(checkedUsers))
     dispatch(deleteSecondUsers())
@@ -59,7 +63,7 @@ const User = ({users, isAllCheckedUsers, toggleAddUserPopup}) => {
         </tr>
       </thead>
       <tbody>
-        {users.map(el => <Userrow key={el.id} user={el}/>)}
+        {usersForCompanies.map(el => <Userrow key={el.id} user={el}/>)}
       </tbody>
     </table>
     </div>

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import vuid from 'vuid';
 import { addUserToCompany } from '../../redux/companySlice';
 import { addUser } from '../../redux/userSlice';
+import * as selectors from '../../redux/selectors'
+
 
 const initialValues = {
   name: "",
@@ -10,14 +12,11 @@ const initialValues = {
   position: "",
 };
 
-const Adduser = ({popUserHandler, isAddEmploy, toggleAddUserPopup}) => {
+const AddUser = ({ toggleAddUserPopup}) => {
 
-  const companies = useSelector(state=> state.companies)
-
-
+  const companies = useSelector(selectors.companies)
   const dispatch = useDispatch();
 
-  
   const [values, setValues] = useState(initialValues)
   const [company, setCompany] = useState(0)
 
@@ -44,19 +43,20 @@ const Adduser = ({popUserHandler, isAddEmploy, toggleAddUserPopup}) => {
     setValues(initialValues)
     setCompany(0)
   }
+
   const closeHandler = (e) => {
     e.preventDefault()
     toggleAddUserPopup()
   }
-  
+
   return (
-    <div className='popup' style={{display: isAddEmploy ? 'block': 'none'}}>
+    <div className='popup'>
       <form >
         <p>Имя</p>
         <input required type="text" value={values.name} name="name" onChange={handleInputChange}/>
         <p>Фамилия</p>
         <input required type="text" value={values.surname} name="surname" onChange={handleInputChange}/>
-        <p>Позиия</p>
+        <p>Позиция</p>
         <input required type="text" value={values.position} name="position" onChange={handleInputChange}/>
         <p>Название компании</p>
         <select onChange={optionHandler} name='companyId' value={company} required>
@@ -72,4 +72,4 @@ const Adduser = ({popUserHandler, isAddEmploy, toggleAddUserPopup}) => {
   );
 };
 
-export default Adduser;
+export default AddUser;

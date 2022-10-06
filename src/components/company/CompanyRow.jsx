@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteCompany, check } from "../redux/companySlice";
+import { deleteCompany, check } from "../../redux/companySlice";
+import RowInput from "../ui/RowInput";
 
-const Companyrow = ({ company }) => {
+const CompanyRow = ({ company }) => {
   const dispatch = useDispatch();
 
   const deleteHandler = (e) => {
@@ -23,11 +24,9 @@ const Companyrow = ({ company }) => {
           checked={company.checked}
         />
       </td>
-      <td contentEditable suppressContentEditableWarning>{company.name}</td>
+      <RowInput company={company} field={'name'}>{company.name}</RowInput>
       <td>{company.employyees}</td>
-      <td contentEditable suppressContentEditableWarning>
-        {company.address}
-        </td>
+      <RowInput company={company} field={'address'}>{company.address}</RowInput>
       <td>
         <button className="btn" onClick={deleteHandler}>Удалить</button>
       </td>
@@ -35,4 +34,4 @@ const Companyrow = ({ company }) => {
   );
 };
 
-export default Companyrow;
+export default CompanyRow;
