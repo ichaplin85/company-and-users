@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteUserFromCompany } from "../../redux/companySlice";
 import { deleteUser, checkUser } from "../../redux/userSlice";
+import RowInput from "../ui/RowInput";
 
 const UserRow = ({ user }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const UserRow = ({ user }) => {
     dispatch(checkUser(user.id))
   }
 
+
   return (
     <tr className={user.checked ? "active": ""}>
       <td>
@@ -25,9 +27,9 @@ const UserRow = ({ user }) => {
           checked={user.checked}
          />
       </td>
-      <td contentEditable suppressContentEditableWarning>{user.name}</td>
-      <td contentEditable suppressContentEditableWarning>{user.surname}</td>
-      <td contentEditable suppressContentEditableWarning>{user.position}</td>
+      <RowInput user={user} field={'name'}>{user.name}</RowInput>
+      <RowInput user={user} field={'surname'}>{user.surname}</RowInput>
+      <RowInput user={user} field={'position'}>{user.position}</RowInput>
       <td>
         <button className="btn" onClick={deleteHandler}>Удалить</button>
       </td>

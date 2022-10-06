@@ -23,11 +23,11 @@ const Company = ({toggleCompany, toggleAddPopup}) => {
     toggleAddPopup()
   }
 
-   
+
   const deleteHandler = (e) => {
     e.preventDefault()
-    const checkedCompaines = companies.filter(({checked}) => Boolean(checked));
-    dispatch(deleteUsersWithCompany(checkedCompaines))
+    const checkedCompanies = companies.filter(({checked}) => Boolean(checked));
+    dispatch(deleteUsersWithCompany(checkedCompanies))
     dispatch(deleteSecondCompany())
   }
 

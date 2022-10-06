@@ -22,8 +22,10 @@ function App() {
     <div className="App">
         <Company toggleAddPopup={toggleAddPopup}/>
         <User toggleAddUserPopup={toggleAddUserPopup}/>
-        <AddCompany isAddCompany={isAddCompany} toggleAddPopup={toggleAddPopup}/>
-        <AddUser isAddEmploy={isAddEmploy} toggleAddUserPopup={toggleAddUserPopup}/>
+        {isAddCompany && <AddCompany toggleAddPopup={toggleAddPopup}/>}
+        {isAddEmploy && <AddUser toggleAddUserPopup={toggleAddUserPopup}/>}
+        
+        
     </div>
   );
 }

@@ -12,6 +12,7 @@ const User = ({toggleAddUserPopup}) => {
   const users = useSelector(selectors.users);
   const usersForCompanies = useSelector(selectors.usersForCompanies)
   const isAllCheckedUsers = useSelector(selectors.isAllCheckedUsers)
+  const checkedUsers = useSelector(selectors.checkedUsers)
 
 
   const toggle = (e) => {
@@ -30,7 +31,6 @@ const User = ({toggleAddUserPopup}) => {
 
   const deleteHandler = (e) => {
     e.preventDefault()
-    const checkedUsers = usersForCompanies.filter(({checked})=> Boolean(checked));
 
     dispatch(deleteMassUsers(checkedUsers))
     dispatch(deleteSecondUsers())

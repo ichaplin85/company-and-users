@@ -12,13 +12,11 @@ const initialValues = {
   position: "",
 };
 
-const AddUser = ({ isAddEmploy, toggleAddUserPopup}) => {
+const AddUser = ({ toggleAddUserPopup}) => {
 
   const companies = useSelector(selectors.companies)
-
   const dispatch = useDispatch();
 
-  
   const [values, setValues] = useState(initialValues)
   const [company, setCompany] = useState(0)
 
@@ -45,19 +43,20 @@ const AddUser = ({ isAddEmploy, toggleAddUserPopup}) => {
     setValues(initialValues)
     setCompany(0)
   }
+
   const closeHandler = (e) => {
     e.preventDefault()
     toggleAddUserPopup()
   }
-  
+
   return (
-    <div className='popup' style={{display: isAddEmploy ? 'block': 'none'}}>
+    <div className='popup'>
       <form >
         <p>Имя</p>
         <input required type="text" value={values.name} name="name" onChange={handleInputChange}/>
         <p>Фамилия</p>
         <input required type="text" value={values.surname} name="surname" onChange={handleInputChange}/>
-        <p>Позиия</p>
+        <p>Позиция</p>
         <input required type="text" value={values.position} name="position" onChange={handleInputChange}/>
         <p>Название компании</p>
         <select onChange={optionHandler} name='companyId' value={company} required>

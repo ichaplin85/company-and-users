@@ -7,10 +7,10 @@ import { addCompany } from '../../redux/companySlice';
 const initialValues = {
   name: "",
   address: "",
-  employyees: 0,
+  employees: 0,
 };
 
-const AddCompany = ({isAddCompany, toggleAddPopup}) => {
+const AddCompany = ({toggleAddPopup}) => {
   const dispatch = useDispatch();
 
   const [values, setValues] = useState(initialValues)
@@ -34,7 +34,7 @@ const AddCompany = ({isAddCompany, toggleAddPopup}) => {
 
 
   return (
-    <div className='popup' style={{display: isAddCompany ? 'block': 'none'}}>
+    <div className='popup'>
       <form >
         <p>Название</p>
         <input required type="text" value={values.name} name="name" onChange={handleInputChange}/>
